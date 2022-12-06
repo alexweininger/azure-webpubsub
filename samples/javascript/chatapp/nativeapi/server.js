@@ -3,8 +3,8 @@ const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 const { WebPubSubEventHandler } = require('@azure/web-pubsub-express');
 
 const app = express();
-const hubName = 'sample_chat';
-const port = 8080;
+const hubName = 'chat';
+const port = 8888;
 
 let connectionString = process.argv[2] || process.env.WebPubSubConnectionString;
 let serviceClient = new WebPubSubServiceClient(connectionString, hubName);

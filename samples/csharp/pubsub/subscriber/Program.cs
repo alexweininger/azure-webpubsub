@@ -20,9 +20,11 @@ namespace subscriber
             var hub = args[1];
 
             // Either generate the URL or fetch it from server or fetch a temp one from the portal
-            var serviceClient = new WebPubSubServiceClient(connectionString, hub);
+            var serviceClient = new WebPubSubServiceClient(connectionString, hub, new WebPubSubServiceClientOptions{
+                ReverseProxyEndpoint = new Uri("https://apim-url")
+            });
             var url = serviceClient.GetClientAccessUri();
-
+Console.WriteLine(url);
             using (var client = new WebsocketClient(url))
             {
                 // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
