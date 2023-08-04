@@ -31,7 +31,12 @@ async function main() {
             max = Math.max(max, cost);
             sum += cost;
             if (index % samplingInterval == 0) {
-                console.log(`client -> Server (last=#${index}) | min: ${min} ms | max: ${max} ms | avg: ${sum / samplingInterval} ms`);
+
+                console.log(`client -> Server (Last ${samplingInterval}) | \
+min: ${min.toString().padEnd(6)} ms | \
+max: ${max.toString().padEnd(6)} ms | \
+avg: ${(sum / samplingInterval).toFixed(2).padEnd(6)} ms`);
+
                 min = 10000, max = 0, sum = 0;
             }
             socket.emit("server to client event", (data));
