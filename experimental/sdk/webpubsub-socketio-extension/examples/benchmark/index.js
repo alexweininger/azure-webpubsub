@@ -17,7 +17,7 @@ async function main() {
     instrument(server, { auth: false, mode: "production", });
     const benchmarkNs = server.of("/benchmark");
 
-    var lastReceivedIndex = 0;
+    var lastReceivedIndex = 0, lastLogIndex = 0;
 
     // Client -> Server time
     var min = 10000, max = 0, sum = 0;
@@ -36,9 +36,9 @@ async function main() {
 min: ${min.toString().padEnd(7)} ms | \
 max: ${max.toString().padEnd(7)} ms | \
 avg: ${(sum / samplingInterval).toFixed(1).padEnd(7)} ms | \
-idx: ${(lastReceivedIndex + 1).toString().padEnd(5)} -> ${index.toString().padEnd(5)} |`);
+idx: ${(lastLogIndex).toString().padEnd(5)} -> ${index.toString().padEnd(5)} |`);
 
-                min = 10000, max = 0, sum = 0;
+                min = 10000, max = 0, sum = 0; lastLogIndex = index;
             }
             socket.emit("server to client event", (data));
 
