@@ -33,9 +33,10 @@ async function main() {
             if (index % samplingInterval == 0) {
 
                 console.log(`client -> Server (Last ${samplingInterval}) | \
-min: ${min.toString().padEnd(6)} ms | \
-max: ${max.toString().padEnd(6)} ms | \
-avg: ${(sum / samplingInterval).toFixed(2).padEnd(6)} ms`);
+min: ${min.toString().padEnd(7)} ms | \
+max: ${max.toString().padEnd(7)} ms | \
+avg: ${(sum / samplingInterval).toFixed(1).padEnd(7)} ms | \
+idx: ${(lastReceivedIndex + 1).toString().padEnd(5)} -> ${index.toString().padEnd(5)} |`);
 
                 min = 10000, max = 0, sum = 0;
             }
