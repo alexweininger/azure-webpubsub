@@ -12,7 +12,7 @@
         "socket.io-client": "^4.7.2"
     },
     "scripts": {
-        "build": "tsc client.ts server.js --outDir ./dist",
+        "build": "tsc client.ts server.ts --outDir ./dist",
         "server": "node ./dist/server.js",
         "client": "node ./dist/client.js"
     }
